@@ -22,9 +22,9 @@ class FootballScoreboard : FootballScoreboardEventListener {
 
 }
 
-class BasketBallScoreboard: ScoreboardEventListener {
+class BasketBallScoreboard: BasketballBoardEventListener {
 
-    private val dispatcher = EventDispatcher()
+    private val dispatcher = BasketballEventDispatcher()
 
     init {
         dispatcher.registerListener(this)
@@ -36,18 +36,6 @@ class BasketBallScoreboard: ScoreboardEventListener {
 
     override fun showPeriodEnded() {
         println("period ended")
-    }
-
-    override fun showGoalScored() {
-        TODO("Not yet implemented")
-    }
-
-    override fun showRedCard() {
-        TODO("Not yet implemented")
-    }
-
-    override fun showYellowCard() {
-        TODO("Not yet implemented")
     }
 
 }

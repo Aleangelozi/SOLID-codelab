@@ -18,6 +18,13 @@ interface FootballScoreboardEventListener {
 
 }
 
+interface BasketballBoardEventListener {
+
+    fun showPeriodStarted()
+    fun showPeriodEnded()
+
+}
+
 class EventDispatcher {
     lateinit var listener: ScoreboardEventListener
 
@@ -57,6 +64,40 @@ class FootballEventDispatcher: ScoreboardEventListener {
     }
 
     override fun showPeriodEnded() {
+
+    }
+}
+
+class BasketballEventDispatcher: ScoreboardEventListener {
+
+    private val dispatcher = EventDispatcher()
+
+    init {
+        dispatcher.registerListener(this)
+    }
+    lateinit var listener: BasketballBoardEventListener
+
+    fun registerListener(listener: BasketballBoardEventListener) {
+        this.listener = listener
+    }
+
+    override fun showPeriodStarted() {
+        listener.showPeriodStarted()
+    }
+
+    override fun showPeriodEnded() {
+        listener.showPeriodEnded()
+    }
+
+    override fun showGoalScored() {
+
+    }
+
+    override fun showRedCard() {
+
+    }
+
+    override fun showYellowCard() {
 
     }
 }
